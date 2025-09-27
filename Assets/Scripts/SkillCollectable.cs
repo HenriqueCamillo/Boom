@@ -7,7 +7,13 @@ public class SkillCollectable : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-            if (TryGetComponent(out SkillExecutor skillExecutor))
+        {
+            var skillExecutor = collision.GetComponentInParent<SkillExecutor>();
+            if (skillExecutor != null)
+            {
                 skillExecutor.AddSkill(skill);
+                this.gameObject.SetActive(false);
+            }
+        }
     }
 }

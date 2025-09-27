@@ -42,6 +42,12 @@ public class SkillExecutor : MonoBehaviour
 
         return skill;
     }
+    
+    public void ClearSkills()
+    {
+        skills.Clear();
+    }
+
 
     public void AddSkill(Skill skill)
     {
