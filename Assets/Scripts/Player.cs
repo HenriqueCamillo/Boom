@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
     public static Player Instance { get; private set; }
 
     [SerializeField] private bool infiniteJumps;
@@ -23,12 +24,14 @@ public class Player : MonoBehaviour {
 
     private bool pressingJump = false;
     private bool isGrounded;
-    private bool isWalking;
+    private bool canMove = true;
 
     public Rigidbody2D Rigidbody => rb;
 
-    private void Awake() {
-        if (Instance != null) {
+    private void Awake()
+    {
+        if (Instance != null)
+        {
             Debug.LogError("There is more than one Player instance");
             return;
         }
@@ -39,7 +42,7 @@ public class Player : MonoBehaviour {
     private void OnEnable()
     {
         playerInputActions.Player.Enable();
-        
+
         playerInputActions.Player.Action.performed += ExecuteSkill;
         playerInputActions.Player.Action.canceled += EndSkillExecution;
 
@@ -58,36 +61,36 @@ public class Player : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        ApplyGravityModifiers();  
-    } 
+        ApplyGravityModifiers();
+    }
 
     private void Update()
     {
-        HandleMovement();
+        if(canMove)
+            HandleMovement();
     }
 
     private void HandleMovement()
     {
         Vector2 inputVector = GetMovementVectorNormalized();
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckSize, groundLayer);
-
         rb.linearVelocity = new Vector2(inputVector.x * moveSpeed, rb.linearVelocity.y);
     }
 
     private void ExecuteSkill(InputAction.CallbackContext ctx) => ExecuteSkill();
     private void ExecuteSkill()
     {
-        skillExecutor.ExecuteNextSkill(this);
+        skillExecutor.ExecuteNextSkill();
     }
 
     private void EndSkillExecution() => EndSkillExecution();
     private void EndSkillExecution(InputAction.CallbackContext ctx)
     {
-        skillExecutor.EndSkillExecution(this);
+        skillExecutor.EndSkillExecution();
     }
 
-    public void Jump(InputAction.CallbackContext ctx) 
-    {   
+    public void Jump(InputAction.CallbackContext ctx)
+    {
         if (!infiniteJumps)
             return;
 
@@ -96,7 +99,7 @@ public class Player : MonoBehaviour {
         else if (ctx.canceled)
             EndJump();
     }
-    
+
     public void StartJump()
     {
         pressingJump = true;
@@ -108,7 +111,7 @@ public class Player : MonoBehaviour {
     {
         pressingJump = false;
     }
-    
+
     private void ApplyGravityModifiers()
     {
         if (rb.linearVelocity.y < 0f)
@@ -119,13 +122,14 @@ public class Player : MonoBehaviour {
             rb.gravityScale = normalGravityScale;
     }
 
-    public bool IsWalking()
+    public Vector2 GetMovementVectorNormalized()
     {
-        return isWalking;
-    }
-
-    public Vector2 GetMovementVectorNormalized() {
         Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
         return inputVector.normalized;
+    }
+
+    public void EnableMovement(bool enable)
+    {
+        canMove = enable;
     }
 }

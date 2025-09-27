@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f497e08a31ee1da489b42bd4b9f08090, type: 3}
-  m_Name: JumpSkill
-  m_EditorClassIdentifier: Assembly-CSharp::JumpSkill
+  m_Script: {fileID: 11500000, guid: 920ad100d30af5849bc85064d31a99dd, type: 3}
+  m_Name: BoomSkill
+  m_EditorClassIdentifier: Assembly-CSharp::BoomSkill
   duration: 0
-  EndOnButtonRelease: 1
+  EndOnButtonRelease: 0
   DisableMovement: 0
+  boomForce: 10
