@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour {
     public static Player Instance { get; private set; }
@@ -14,6 +15,10 @@ public class Player : MonoBehaviour {
 
     private PlayerInputActions playerInputActions;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+    private float groundCheckSize = 0.2f;
+
     private bool pressingJump = false;
     private bool isGrounded;
     private bool isWalking;
@@ -42,13 +47,9 @@ public class Player : MonoBehaviour {
     private void HandleMovement()
     {
         Vector2 inputVector = GetMovementVectorNormalized();
-        bool canMove = true;
-        isGrounded = true;
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckSize, groundLayer);
 
-        if (canMove)
-        {
-            rb.linearVelocity = new Vector2(inputVector.x * moveSpeed, rb.linearVelocity.y);
-        }
+        rb.linearVelocity = new Vector2(inputVector.x * moveSpeed, rb.linearVelocity.y);
 
         playerInputActions.Player.Jump.performed += Jump;
         playerInputActions.Player.Jump.canceled += Jump;
