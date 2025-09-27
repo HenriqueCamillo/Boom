@@ -16,13 +16,6 @@ public class SkillExecutor : MonoBehaviour
 
     private Skill lastExecutedSkill;
 
-    // TODO: Remove
-    private void Awake()
-    {
-        for (int i = 0; i < 10; i++)
-            skills.AddLast(jumpSkill);
-    }
-
     private Skill PopSkill()
     {
         if (skills.Count == 0)

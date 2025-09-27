@@ -6,6 +6,8 @@ using UnityEngine.Rendering;
 public class Player : MonoBehaviour {
     public static Player Instance { get; private set; }
 
+    [SerializeField] private bool infiniteJumps;
+
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float fallGravityScale = 2.25f;
@@ -38,14 +40,20 @@ public class Player : MonoBehaviour {
     {
         playerInputActions.Player.Enable();
         
-        playerInputActions.Player.Jump.performed += ExcecuteSkill;
-        playerInputActions.Player.Jump.canceled += ExcecuteSkill;
+        playerInputActions.Player.Action.performed += ExecuteSkill;
+        playerInputActions.Player.Action.canceled += EndSkillExecution;
+
+        playerInputActions.Player.Jump.performed += Jump;
+        playerInputActions.Player.Jump.canceled += Jump;
     }
 
     private void OnDisable()
     {
-        playerInputActions.Player.Jump.performed -= ExcecuteSkill;
-        playerInputActions.Player.Jump.canceled -= ExcecuteSkill;
+        playerInputActions.Player.Action.performed -= ExecuteSkill;
+        playerInputActions.Player.Action.canceled -= EndSkillExecution;
+
+        playerInputActions.Player.Jump.performed -= Jump;
+        playerInputActions.Player.Jump.canceled -= Jump;
     }
 
     private void FixedUpdate()
@@ -66,14 +74,29 @@ public class Player : MonoBehaviour {
         rb.linearVelocity = new Vector2(inputVector.x * moveSpeed, rb.linearVelocity.y);
     }
 
-    private void ExcecuteSkill(InputAction.CallbackContext ctx)
+    private void ExecuteSkill(InputAction.CallbackContext ctx) => ExecuteSkill();
+    private void ExecuteSkill()
     {
-        if (ctx.performed)
-            skillExecutor.ExecuteNextSkill(this);
-        else if (ctx.canceled)
-            skillExecutor.EndSkillExecution(this);
+        skillExecutor.ExecuteNextSkill(this);
     }
 
+    private void EndSkillExecution() => EndSkillExecution();
+    private void EndSkillExecution(InputAction.CallbackContext ctx)
+    {
+        skillExecutor.EndSkillExecution(this);
+    }
+
+    public void Jump(InputAction.CallbackContext ctx) 
+    {   
+        if (!infiniteJumps)
+            return;
+
+        if (ctx.performed)
+            StartJump();
+        else if (ctx.canceled)
+            EndJump();
+    }
+    
     public void StartJump()
     {
         pressingJump = true;

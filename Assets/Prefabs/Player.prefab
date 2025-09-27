@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34cddb0a34662264e870eb97a0a89425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  infiniteJumps: 1
   moveSpeed: 5
   jumpForce: 5
   fallGravityScale: 2.25
