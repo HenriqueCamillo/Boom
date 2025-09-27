@@ -236,7 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d322dd85d55c38042a7569ae11555645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillExecutor
-  jumpSkill: {fileID: 11400000, guid: a1385a29250c3334292832c893c29d3e, type: 2}
+  testList: []
+  player: {fileID: 2346069572206189050}
 --- !u!1 &7271912228519001602
 GameObject:
   m_ObjectHideFlags: 0

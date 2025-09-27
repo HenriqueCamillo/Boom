@@ -1309,7 +1309,31 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2270815057265642832, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1571908603}
+    - target: {fileID: 2270815057265642832, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
       propertyPath: jumpSkill
+      value: 
+      objectReference: {fileID: 11400000, guid: a1385a29250c3334292832c893c29d3e, type: 2}
+    - target: {fileID: 2270815057265642832, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
+      propertyPath: testList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2270815057265642832, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
+      propertyPath: 'testList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b0df86cd88c30ce408ad480df745ae95, type: 2}
+    - target: {fileID: 2270815057265642832, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
+      propertyPath: 'testList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a1385a29250c3334292832c893c29d3e, type: 2}
+    - target: {fileID: 2270815057265642832, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
+      propertyPath: 'testList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2270815057265642832, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
+      propertyPath: 'testList.Array.data[3]'
       value: 
       objectReference: {fileID: 11400000, guid: a1385a29250c3334292832c893c29d3e, type: 2}
     - target: {fileID: 2320242399222940663, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
@@ -1352,6 +1376,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2346069572206189050, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3063410303454592355, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5285807755967601815, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1361,6 +1393,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
+--- !u!114 &1571908603 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2346069572206189050, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
+  m_PrefabInstance: {fileID: 1446121429}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cddb0a34662264e870eb97a0a89425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &2039093281
 GameObject:
   m_ObjectHideFlags: 0

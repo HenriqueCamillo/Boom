@@ -8,19 +8,23 @@ public class SkillExecutor : MonoBehaviour
         Queue,
         Stack,
     }
-
-    [SerializeField] JumpSkill jumpSkill;
-    
+    [SerializeField] Player player;
     private LinkedList<Skill> skills = new();
     private ExecutionOrder executionOrder = ExecutionOrder.Queue;
 
     private Skill lastExecutedSkill;
 
+    private void Update()
+    {
+        if (lastExecutedSkill != null)
+            lastExecutedSkill.UpdateExecution(player);
+    }
+
     private Skill PopSkill()
     {
         if (skills.Count == 0)
             return null;
-            
+
         Skill skill;
         switch (executionOrder)
         {
@@ -44,22 +48,22 @@ public class SkillExecutor : MonoBehaviour
         skills.AddLast(skill);
     }
 
-    public void ExecuteNextSkill(Player player)
+    public void ExecuteNextSkill()
     {
         Skill skill = PopSkill();
         if (skill == null)
             return;
 
-        ExecuteSkill(player, skill);
+        ExecuteSkill(skill);
     }
 
-    private void ExecuteSkill(Player player, Skill skill)
+    private void ExecuteSkill(Skill skill)
     {
         lastExecutedSkill = skill;
         skill.Execute(player);
     }
 
-    public void EndSkillExecution(Player player)
+    public void EndSkillExecution()
     {
         if (lastExecutedSkill == null)
             return;
