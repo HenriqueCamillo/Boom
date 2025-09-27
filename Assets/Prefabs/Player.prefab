@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7124146509599741629}
   - component: {fileID: 737046788722383840}
   - component: {fileID: 3063410303454592355}
+  - component: {fileID: 4311726239349230140}
+  - component: {fileID: 948092959102655550}
   m_Layer: 0
   m_Name: PlayerVisual
   m_TagString: Player
@@ -28,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 3780994090883928852}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.9015, z: 0}
-  m_LocalScale: {x: 0.7369, y: 1.797, z: 1}
+  m_LocalPosition: {x: 0, y: 0.489, z: 0}
+  m_LocalScale: {x: 1.0942342, y: 1.2086622, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8347586628781505394}
@@ -82,7 +84,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: 1e4c2b082c3f8f940be98d9a3d42061e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -127,7 +129,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0011602044, y: -0.009880424}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -137,7 +139,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.2644999, y: 0.7929034}
   m_EdgeRadius: 0
 --- !u!50 &3063410303454592355
 Rigidbody2D:
@@ -165,7 +167,42 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &4311726239349230140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3780994090883928852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27307e87aa271c144b91475f26714552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  player: {fileID: 2346069572206189050}
+--- !u!95 &948092959102655550
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3780994090883928852}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f72d27544b6096479591ba3ef093df2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5285807755967601815
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +261,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   skillExecutor: {fileID: 2270815057265642832}
+  animator: {fileID: 0}
 --- !u!114 &2270815057265642832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d322dd85d55c38042a7569ae11555645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillExecutor
-  testList: []
   player: {fileID: 2346069572206189050}
 --- !u!1 &7271912228519001602
 GameObject:
@@ -263,7 +300,7 @@ Transform:
   m_GameObject: {fileID: 7271912228519001602}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.50166947, z: 0}
+  m_LocalPosition: {x: 0, y: -0.4056, z: 0}
   m_LocalScale: {x: 1.3570364, y: 0.55648303, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

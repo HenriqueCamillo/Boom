@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private SkillExecutor skillExecutor;
+    [SerializeField] private Animator animator;
     private float groundCheckSize = 0.2f;
 
     private bool pressingJump = false;
@@ -66,7 +67,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if(canMove)
+        if (canMove)
             HandleMovement();
     }
 
@@ -131,5 +132,18 @@ public class Player : MonoBehaviour
     public void EnableMovement(bool enable)
     {
         canMove = enable;
+    }
+
+    public bool IsWalking()
+    {
+        return rb.linearVelocity.x != 0f;
+    }
+    public bool IsGrounded()
+    {
+        return isGrounded;
+    }
+    public bool IsFalling()
+    {
+        return rb.linearVelocity.y < 0f;
     }
 }
