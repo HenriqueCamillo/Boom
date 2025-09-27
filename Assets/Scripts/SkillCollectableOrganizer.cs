@@ -3,12 +3,18 @@ using UnityEngine;
 
 public class SkillCollectableOrganizer : MonoBehaviour
 {
+    [SerializeField] SkillExecutor skillExecutor;
     [SerializeField] Transform spawnPosition;
     [SerializeField] float distanceBetweenSpawns;
 
     [SerializeField] List<SkillCollectable> skillCollectables;
 
     private void Awake()
+    {
+        Organize();
+    }
+
+    private void Organize()
     {
         bool hasEvenNumberOfSkills = skillCollectables.Count % 2 == 0;
         for (int i = 0; i < skillCollectables.Count; i++)
@@ -20,7 +26,16 @@ public class SkillCollectableOrganizer : MonoBehaviour
             else
                 xPosition += (distanceBetweenSpawns * ((i + 1) / 2)) * sign;
 
-            skillCollectables[i].transform.position = new Vector3( + xPosition, spawnPosition.transform.position.y, spawnPosition.transform.position.z);
+            skillCollectables[i].transform.position = new Vector3(xPosition, spawnPosition.transform.position.y, spawnPosition.transform.position.z);
         }
+    }
+
+    public void Reset()
+    {
+        foreach (SkillCollectable skillCollectable in skillCollectables)
+            skillCollectable.gameObject.SetActive(true);
+        
+        skillExecutor.ClearSkills();
+        Organize();
     }
 }
