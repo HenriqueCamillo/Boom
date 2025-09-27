@@ -6,7 +6,6 @@ using UnityEngine.Rendering;
 public class Player : MonoBehaviour {
     public static Player Instance { get; private set; }
 
-
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float fallGravityScale = 2.25f;
@@ -17,20 +16,36 @@ public class Player : MonoBehaviour {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private SkillExecutor skillExecutor;
     private float groundCheckSize = 0.2f;
 
     private bool pressingJump = false;
     private bool isGrounded;
     private bool isWalking;
 
+    public Rigidbody2D Rigidbody => rb;
 
     private void Awake() {
         if (Instance != null) {
             Debug.LogError("There is more than one Player instance");
+            return;
         }
         Instance = this;
         playerInputActions = new PlayerInputActions();
+    }
+
+    private void OnEnable()
+    {
         playerInputActions.Player.Enable();
+        
+        playerInputActions.Player.Jump.performed += ExcecuteSkill;
+        playerInputActions.Player.Jump.canceled += ExcecuteSkill;
+    }
+
+    private void OnDisable()
+    {
+        playerInputActions.Player.Jump.performed -= ExcecuteSkill;
+        playerInputActions.Player.Jump.canceled -= ExcecuteSkill;
     }
 
     private void FixedUpdate()
@@ -43,30 +58,32 @@ public class Player : MonoBehaviour {
         HandleMovement();
     }
 
-
     private void HandleMovement()
     {
         Vector2 inputVector = GetMovementVectorNormalized();
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckSize, groundLayer);
 
         rb.linearVelocity = new Vector2(inputVector.x * moveSpeed, rb.linearVelocity.y);
-
-        playerInputActions.Player.Jump.performed += Jump;
-        playerInputActions.Player.Jump.canceled += Jump;
     }
 
-    void Jump(InputAction.CallbackContext ctx)
+    private void ExcecuteSkill(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
-        {
-            pressingJump = true;
-            if (isGrounded)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            }
-        }
+            skillExecutor.ExecuteNextSkill(this);
         else if (ctx.canceled)
-            pressingJump = false;
+            skillExecutor.EndSkillExecution(this);
+    }
+
+    public void StartJump()
+    {
+        pressingJump = true;
+        if (isGrounded)
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+    }
+
+    public void EndJump()
+    {
+        pressingJump = false;
     }
     
     private void ApplyGravityModifiers()
@@ -88,5 +105,4 @@ public class Player : MonoBehaviour {
         Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
         return inputVector.normalized;
     }
-
 }
