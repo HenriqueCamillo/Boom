@@ -16,4 +16,4 @@ MonoBehaviour:
   EndOnButtonRelease: 0
   DisableMovement: 0
   UI_Prefab: {fileID: 8716754870639634304, guid: 32e835261852fe242baa34458368673d, type: 3}
-  boomForce: 15
+  boomForce: 16
