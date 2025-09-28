@@ -15,4 +15,5 @@ MonoBehaviour:
   duration: 2
   EndOnButtonRelease: 0
   DisableMovement: 1
+  UI_Prefab: {fileID: 1177732708474468175, guid: ed48b89a3a8f8334a85439e2147f1fdc, type: 3}
   dashForce: 30

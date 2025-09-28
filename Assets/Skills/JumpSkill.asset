@@ -16,3 +16,4 @@ MonoBehaviour:
   EndOnButtonRelease: 1
   DisableMovement: 0
   UI_Prefab: {fileID: 7676556433287286772, guid: d5c28684a9c0adf428290c8b9e77825a, type: 3}
+  jumpForce: 4
