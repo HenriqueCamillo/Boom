@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     private bool pressingJump = false;
     private bool isGrounded;
     private bool canMove = true;
+    private bool gravityDisabled = false;
+    public bool IsDahsing { get; set; }
 
     public Rigidbody2D Rigidbody => rb;
     public bool IsFacingLeft => animator.IsFacingLeft;
@@ -114,8 +116,23 @@ public class Player : MonoBehaviour
         pressingJump = false;
     }
 
+    public void DisableGravity()
+    {
+        gravityDisabled = true;
+        rb.gravityScale = 0f;
+    }
+
+    public void EnableGravity()
+    {
+        gravityDisabled = false;
+        rb.gravityScale = 1f;
+    }
+
     private void ApplyGravityModifiers()
     {
+        if (gravityDisabled)
+            return;
+
         if (rb.linearVelocity.y < 0f)
             rb.gravityScale = fallGravityScale;
         else if (pressingJump && rb.linearVelocity.y > 0f)
@@ -127,12 +144,14 @@ public class Player : MonoBehaviour
     public Vector2 GetMovementVectorNormalized()
     {
         Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
-        return inputVector.normalized;
+        var horizontalOnlyInput = new Vector2(inputVector.x, 0f);
+        return horizontalOnlyInput.normalized;
     }
 
     public void EnableMovement(bool enable)
     {
         canMove = enable;
+        animator.LockFlip = !canMove;
     }
 
     public void SetIsPressingJump(bool isPressingJump)

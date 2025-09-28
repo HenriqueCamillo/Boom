@@ -8,11 +8,15 @@ public class DashSkill : Skill
     public override void Execute(Player player)
     {
         base.Execute(player);
+        player.IsDahsing = true;
+        player.DisableGravity();
         player.Rigidbody.linearVelocity = new Vector2(dashForce * (player.IsFacingLeft ? -1 : 1), 0f);
     }
 
     public override void EndExecution(Player player)
     {   
+        player.IsDahsing = false;
+        player.EnableGravity();
         player.Rigidbody.linearVelocity = new Vector2(0f, 0f);
         base.EndExecution(player);
     }
