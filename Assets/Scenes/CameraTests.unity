@@ -1789,6 +1789,10 @@ PrefabInstance:
       propertyPath: 'skillCollectables.Array.data[2]'
       value: 
       objectReference: {fileID: 1063041019}
+    - target: {fileID: 4019834384707169863, guid: 0767460be9cf840479a787486c6de0da, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5141760670510271424, guid: e100b6713d2077c47b317f98cdaacfb0, type: 3}
     - target: {fileID: 4161457811304379469, guid: 0767460be9cf840479a787486c6de0da, type: 3}
       propertyPath: m_Name
       value: LevelEssentials
@@ -1832,6 +1836,14 @@ PrefabInstance:
     - target: {fileID: 7135101354941676763, guid: 0767460be9cf840479a787486c6de0da, type: 3}
       propertyPath: m_Color.r
       value: 0.04174006
+      objectReference: {fileID: 0}
+    - target: {fileID: 7542214312303520758, guid: 0767460be9cf840479a787486c6de0da, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 7542214312303520758, guid: 0767460be9cf840479a787486c6de0da, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.95
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

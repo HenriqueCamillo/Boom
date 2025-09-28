@@ -10,23 +10,21 @@ public class PressureButton : MonoBehaviour
     [SerializeField] bool pressOnly;
     private bool isPressed;
 
+    private void Awake()
+    {
+        LevelManager.OnHardReset += Reset;
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isPressed)
-            return;
-
         if (collision.CompareTag("Player"))
-        {
-            isPressed = true;
-            animator.SetBool("Pressed", true);
-            onPressed?.Invoke();
-        }
+            Press();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (pressOnly || !isPressed)
+        if (pressOnly)
             return;
 
         if (collision.CompareTag("Player"))
@@ -35,5 +33,30 @@ public class PressureButton : MonoBehaviour
             animator.SetBool("Pressed", false);
             onReleased?.Invoke();
         }
+    }
+
+    private void Press()
+    {
+        if (isPressed)
+            return;
+
+        isPressed = true;
+        animator.SetBool("Pressed", true);
+        onPressed?.Invoke();
+    }
+
+    private void Release()
+    {
+        if (!isPressed)
+            return;
+        
+        isPressed = false;
+        animator.SetBool("Pressed", false);
+        onReleased?.Invoke();
+    }
+
+    private void Reset()
+    {
+        Release();
     }
 }

@@ -146,4 +146,9 @@ public class Player : MonoBehaviour
     {
         return rb.linearVelocity.y < 0f;
     }
+
+    private void Reset()
+    {
+        // skillExecutor.Reset 
+    }
 }

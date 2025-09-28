@@ -22,6 +22,8 @@ public class CameraSwitcher : MonoBehaviour
         levelCameraPosition = levelCamera.transform.position;
 
         Camera.main.transform.position = hubCameraPosition;
+
+        LevelManager.OnHardReset += Reset;
     }
 
     public void ViewHub()
@@ -37,5 +39,10 @@ public class CameraSwitcher : MonoBehaviour
     private void TransitionTo(Vector3 position)
     {
         Camera.main.transform.DOMove(position, transitionDuration).SetEase(ease);
+    }
+
+    private void Reset()
+    {
+        Camera.main.transform.position = hubCameraPosition;
     }
 }
