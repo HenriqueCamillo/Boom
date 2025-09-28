@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73eb6001d8660c40996b08ff0ef0c55, type: 3}
   m_Name: DashSkill
   m_EditorClassIdentifier: Assembly-CSharp::DashSkill
-  duration: 3
+  duration: 2
   EndOnButtonRelease: 0
   DisableMovement: 1
   dashForce: 30

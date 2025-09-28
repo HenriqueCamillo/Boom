@@ -8,7 +8,7 @@ public class BoomSkill : Skill
     public override void Execute(Player player)
     {
         base.Execute(player);
-        player.Rigidbody.AddForce(new Vector2(boomForce, 0f), ForceMode2D.Impulse);
+        player.Rigidbody.AddForce(new Vector2(0f, boomForce), ForceMode2D.Impulse);
     }
 
     public override void EndExecution(Player player)

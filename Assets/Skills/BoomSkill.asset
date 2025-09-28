@@ -15,4 +15,4 @@ MonoBehaviour:
   duration: 0
   EndOnButtonRelease: 0
   DisableMovement: 0
-  boomForce: 10
+  boomForce: 15

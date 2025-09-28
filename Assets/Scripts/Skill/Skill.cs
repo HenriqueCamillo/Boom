@@ -16,19 +16,25 @@ public abstract class Skill : ScriptableObject
         isExecuting = true;
         initialTime = Time.time;
         if (DisableMovement)
+        {
+            Debug.Log("disable movement");
             player.EnableMovement(false);
+        }
     }
 
     public virtual void EndExecution(Player player)
     {
         isExecuting = false;
         if (DisableMovement)
+        {
+            Debug.Log("enable movement back");
             player.EnableMovement(true);
+        }
     }
 
     public virtual void UpdateExecution(Player player)
     {
-        if (duration > 0)
+        if (isExecuting && duration > 0)
         {
             if (Time.time > initialTime + duration)
                 EndExecution(player);
