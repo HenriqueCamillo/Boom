@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SkillCollectable : MonoBehaviour
@@ -9,7 +10,12 @@ public class SkillCollectable : MonoBehaviour
     {
         LevelManager.OnSoftReset += SoftReset;
     }
-    
+
+    private void OnDestroy()
+    {
+        LevelManager.OnSoftReset -= SoftReset;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -26,7 +32,7 @@ public class SkillCollectable : MonoBehaviour
     {
         if (IsStartupCollectable)
             return;
-            
+
         this.gameObject.SetActive(true);
     }
 }
