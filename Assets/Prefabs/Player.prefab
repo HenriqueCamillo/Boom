@@ -175,10 +175,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   infiniteJumps: 1
   moveSpeed: 5
-  jumpForce: 5
-  fallGravityScale: 2.25
+  jumpForce: 6
+  fallGravityScale: 2.8
   lowJumpGravityScale: 1
-  normalGravityScale: 1.75
+  normalGravityScale: 2
   rb: {fileID: 6755126488978130624}
   groundCheck: {fileID: 8347586628781505394}
   groundLayer:
@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillExecutor
   player: {fileID: 2346069572206189050}
+  skillsUI: {fileID: 0}
 --- !u!61 &3948192922572800093
 BoxCollider2D:
   m_ObjectHideFlags: 0
