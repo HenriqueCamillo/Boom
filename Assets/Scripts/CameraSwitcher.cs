@@ -7,9 +7,6 @@ public class CameraSwitcher : MonoBehaviour
     [SerializeField] Camera hubCamera;
     [SerializeField] Camera levelCamera;
 
-    private Vector3 hubCameraPosition;
-    private Vector3 levelCameraPosition;
-
     [Space(5)]
 
     [Header("Transition")]
@@ -18,31 +15,35 @@ public class CameraSwitcher : MonoBehaviour
 
     private void Awake()
     {
-        hubCameraPosition = hubCamera.transform.position;
-        levelCameraPosition = levelCamera.transform.position;
-
-        Camera.main.transform.position = hubCameraPosition;
-
+        SetCamera(hubCamera);
         LevelManager.OnHardReset += Reset;
     }
 
     public void ViewHub()
     {
-        TransitionTo(hubCameraPosition);
+        TransitionTo(hubCamera);
     }
 
     public void ViewLevel()
     {
-        TransitionTo(levelCameraPosition);
+        TransitionTo(levelCamera);
     }
 
-    private void TransitionTo(Vector3 position)
+    private void TransitionTo(Camera camera)
     {
-        Camera.main.transform.DOMove(position, transitionDuration).SetEase(ease);
+        Camera.main.transform.DOMove(camera.transform.position, transitionDuration).SetEase(ease);
+        DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, camera.orthographicSize, transitionDuration);
+
+    }
+
+    private void SetCamera(Camera camera)
+    {
+        Camera.main.transform.position = camera.transform.position;
+        Camera.main.orthographicSize = camera.orthographicSize;
     }
 
     private void Reset()
     {
-        Camera.main.transform.position = hubCameraPosition;
+        SetCamera(hubCamera);
     }
 }
