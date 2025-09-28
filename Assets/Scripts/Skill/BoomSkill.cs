@@ -8,6 +8,8 @@ public class BoomSkill : Skill
     public override void Execute(Player player)
     {
         base.Execute(player);
+        player.Rigidbody.linearVelocity = new Vector2(player.Rigidbody.linearVelocityX, 0f);
+        player.AvoidLowGravity = true;
         player.Rigidbody.AddForce(new Vector2(0f, boomForce), ForceMode2D.Impulse);
     }
 

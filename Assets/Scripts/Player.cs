@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
 
     public Rigidbody2D Rigidbody => rb;
     public bool IsFacingLeft => animator.IsFacingLeft;
+    public bool AvoidLowGravity { get; set; }
 
     private void Awake()
     {
@@ -134,8 +135,11 @@ public class Player : MonoBehaviour
             return;
 
         if (rb.linearVelocity.y < 0f)
+        {
             rb.gravityScale = fallGravityScale;
-        else if (pressingJump && rb.linearVelocity.y > 0f)
+            AvoidLowGravity = false;
+        }
+        else if (!AvoidLowGravity && pressingJump && rb.linearVelocity.y > 0f)
             rb.gravityScale = lowJumpGravityScale;
         else
             rb.gravityScale = normalGravityScale;
