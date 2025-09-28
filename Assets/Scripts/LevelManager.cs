@@ -8,9 +8,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] Player player;
     [SerializeField] Transform playerGameplayReadyPosition;
-    private Vector3 playerInitialPosition;
 
-    public static Action OnHardReset;
     public static Action OnSoftReset;
 
     private void Awake()
@@ -19,23 +17,10 @@ public class LevelManager : MonoBehaviour
             Instance = this;
     }
 
-
-    public void HardResetLevel()
-    {
-        OnHardReset?.Invoke();
-        player.transform.position = playerInitialPosition;
-    }
-
     public void SoftReset()
     {
         OnSoftReset?.Invoke();
         player.transform.position = playerGameplayReadyPosition.position;
         player.Reset();
-    }
-
-
-    private void Start()
-    {
-        playerInitialPosition = player.transform.position;
     }
 }
