@@ -16,7 +16,6 @@ public class CameraSwitcher : MonoBehaviour
     private void Awake()
     {
         SetCamera(hubCamera);
-        LevelManager.OnHardReset += Reset;
     }
 
     public void ViewHub()
@@ -40,10 +39,5 @@ public class CameraSwitcher : MonoBehaviour
     {
         Camera.main.transform.position = camera.transform.position;
         Camera.main.orthographicSize = camera.orthographicSize;
-    }
-
-    private void Reset()
-    {
-        SetCamera(hubCamera);
     }
 }

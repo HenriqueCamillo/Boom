@@ -19,7 +19,8 @@ public class SkillCollectableOrganizer : MonoBehaviour
         bool hasEvenNumberOfSkills = skillCollectables.Count % 2 == 0;
         for (int i = 0; i < skillCollectables.Count; i++)
         {
-            if (skillCollectables[i] == null)
+            SkillCollectable skillCollectable = skillCollectables[i]; 
+            if (skillCollectable == null)
                 continue;
 
             float xPosition = spawnPosition.transform.position.x;
@@ -29,7 +30,8 @@ public class SkillCollectableOrganizer : MonoBehaviour
             else
                 xPosition += (distanceBetweenSpawns * ((i + 1) / 2)) * sign;
 
-            skillCollectables[i].transform.position = new Vector3(xPosition, spawnPosition.transform.position.y, spawnPosition.transform.position.z);
+            skillCollectable.IsStartupCollectable = true;
+            skillCollectable.transform.position = new Vector3(xPosition, spawnPosition.transform.position.y, spawnPosition.transform.position.z);
         }
     }
 

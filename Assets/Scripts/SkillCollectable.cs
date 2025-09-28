@@ -3,11 +3,11 @@ using UnityEngine;
 public class SkillCollectable : MonoBehaviour
 {
     [SerializeField] Skill skill;
+    public bool IsStartupCollectable { get; set; }
 
     private void Awake()
     {
-        LevelManager.OnHardReset += Reset;
-        LevelManager.OnSoftReset += Reset;
+        LevelManager.OnSoftReset += SoftReset;
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,8 +22,11 @@ public class SkillCollectable : MonoBehaviour
         }
     }
 
-    public void Reset()
+    public void SoftReset()
     {
+        if (IsStartupCollectable)
+            return;
+            
         this.gameObject.SetActive(true);
     }
 }

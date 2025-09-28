@@ -10,12 +10,6 @@ public class PressureButton : MonoBehaviour
     [SerializeField] bool pressOnly;
     private bool isPressed;
 
-    private void Awake()
-    {
-        LevelManager.OnHardReset += Reset;
-    }
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
