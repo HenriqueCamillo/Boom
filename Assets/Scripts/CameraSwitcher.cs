@@ -31,7 +31,7 @@ public class CameraSwitcher : MonoBehaviour
     private void TransitionTo(Camera camera)
     {
         Camera.main.transform.DOMove(camera.transform.position, transitionDuration).SetEase(ease);
-        DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, camera.orthographicSize, transitionDuration);
+        DOTween.To(() => Camera.main.orthographicSize, x => Camera.main.orthographicSize = x, camera.orthographicSize, transitionDuration).SetEase(ease);
 
     }
 
