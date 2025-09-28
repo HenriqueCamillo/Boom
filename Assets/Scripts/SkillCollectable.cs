@@ -14,8 +14,7 @@ public class SkillCollectable : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            var skillExecutor = collision.GetComponentInParent<SkillExecutor>();
-            if (skillExecutor != null)
+            if (collision.TryGetComponent(out SkillExecutor skillExecutor))
             {
                 skillExecutor.AddSkill(skill);
                 this.gameObject.SetActive(false);

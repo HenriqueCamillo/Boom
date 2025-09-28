@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 822985925312076328}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.9745097, y: 15.28956, z: -10}
+  m_LocalPosition: {x: -25.61, y: 9.09, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -342,21 +342,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2185179267659539867}
     m_Modifications:
-    - target: {fileID: 246326315396122084, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 246326315396122084, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.378
-      objectReference: {fileID: 0}
     - target: {fileID: 2320242399222940663, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.04
+      value: -9.84
       objectReference: {fileID: 0}
     - target: {fileID: 2320242399222940663, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.56
+      value: -3.14
       objectReference: {fileID: 0}
     - target: {fileID: 2320242399222940663, guid: b2b099cc1579e7e4ea731399f2106917, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1002,6 +994,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cameras
       objectReference: {fileID: 0}
+    - target: {fileID: 936892361543223284, guid: 472419f10124b06419932e77c26fc992, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 936892361543223284, guid: 472419f10124b06419932e77c26fc992, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.06
+      objectReference: {fileID: 0}
     - target: {fileID: 2019321542046594616, guid: 472419f10124b06419932e77c26fc992, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.905491
@@ -1045,6 +1045,14 @@ PrefabInstance:
     - target: {fileID: 3502255003520941857, guid: 472419f10124b06419932e77c26fc992, type: 3}
       propertyPath: orthographic size
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838559378890698398, guid: 472419f10124b06419932e77c26fc992, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -38.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 7838559378890698398, guid: 472419f10124b06419932e77c26fc992, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.03
       objectReference: {fileID: 0}
     - target: {fileID: 8846550167922774351, guid: 472419f10124b06419932e77c26fc992, type: 3}
       propertyPath: orthographic size
