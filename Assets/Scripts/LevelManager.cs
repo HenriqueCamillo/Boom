@@ -30,6 +30,7 @@ public class LevelManager : MonoBehaviour
     {
         OnSoftReset?.Invoke();
         player.transform.position = playerGameplayReadyPosition.position;
+        player.Reset();
     }
 
 
