@@ -385,6 +385,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  avoidSkillStackingCheat:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2697502125679183709}
+        m_TargetAssemblyTypeName: SkillCollectableOrganizer, Assembly-CSharp
+        m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8650713984449307459
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +807,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2185179267659539867}
     m_Modifications:
+    - target: {fileID: 72663184660334113, guid: 4bcd262b6a74daa4487a6bc0ecf24459, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[0].m_Data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 72663184660334113, guid: 4bcd262b6a74daa4487a6bc0ecf24459, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[4].m_Data
+      value: 
+      objectReference: {fileID: -1654786381, guid: f30943bc08a846949b263951a2d0fe40, type: 3}
+    - target: {fileID: 72663184660334113, guid: 4bcd262b6a74daa4487a6bc0ecf24459, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[0].m_RefCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 72663184660334113, guid: 4bcd262b6a74daa4487a6bc0ecf24459, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[4].m_RefCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 72663184660334113, guid: 4bcd262b6a74daa4487a6bc0ecf24459, type: 3}
+      propertyPath: m_Tiles.Array.data[488].second.m_TileSpriteIndex
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 920046522804053081, guid: 4bcd262b6a74daa4487a6bc0ecf24459, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -885,8 +920,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8270675656992567357, guid: 4bcd262b6a74daa4487a6bc0ecf24459, type: 3}
+      propertyPath: m_TileColorArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270675656992567357, guid: 4bcd262b6a74daa4487a6bc0ecf24459, type: 3}
+      propertyPath: m_TileMatrixArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270675656992567357, guid: 4bcd262b6a74daa4487a6bc0ecf24459, type: 3}
       propertyPath: m_TileSpriteArray.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8270675656992567357, guid: 4bcd262b6a74daa4487a6bc0ecf24459, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[0].m_Data

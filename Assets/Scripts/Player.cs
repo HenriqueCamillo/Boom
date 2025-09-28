@@ -57,6 +57,8 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
+        playerInputActions.Player.Disable();
+
         playerInputActions.Player.Action.performed -= ExecuteSkill;
         playerInputActions.Player.Action.canceled -= EndSkillExecution;
 
@@ -182,4 +184,5 @@ public class Player : MonoBehaviour
         skillExecutor.ResetSkills(); 
         rb.linearVelocity = Vector2.zero;
     }
+    
 }
