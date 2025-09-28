@@ -19,6 +19,9 @@ public class SkillCollectableOrganizer : MonoBehaviour
         bool hasEvenNumberOfSkills = skillCollectables.Count % 2 == 0;
         for (int i = 0; i < skillCollectables.Count; i++)
         {
+            if (skillCollectables[i] == null)
+                continue;
+
             float xPosition = spawnPosition.transform.position.x;
             int sign = (i % 2 == 0) ? 1 : -1;
             if (hasEvenNumberOfSkills)
@@ -33,7 +36,8 @@ public class SkillCollectableOrganizer : MonoBehaviour
     public void Reset()
     {
         foreach (SkillCollectable skillCollectable in skillCollectables)
-            skillCollectable.gameObject.SetActive(true);
+            if (skillCollectable != null)
+                skillCollectable.gameObject.SetActive(true);
         
         skillExecutor.ClearSkills();
         Organize();
