@@ -9,6 +9,8 @@ public abstract class Skill : ScriptableObject
     [SerializeField] public bool EndOnButtonRelease;
     [SerializeField] public bool DisableMovement;
 
+    [SerializeField] public GameObject UI_Prefab;
+
     private float initialTime;
 
     public virtual void Execute(Player player)
