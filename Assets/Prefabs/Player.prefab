@@ -185,7 +185,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   skillExecutor: {fileID: 2270815057265642832}
-  animator: {fileID: 948092959102655550}
+  animator: {fileID: 4311726239349230140}
 --- !u!114 &2270815057265642832
 MonoBehaviour:
   m_ObjectHideFlags: 0

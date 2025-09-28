@@ -14,6 +14,8 @@ public class PlayerAnimator : MonoBehaviour {
     private Animator animator;
     private SpriteRenderer sprite;
 
+    public bool IsFacingLeft => sprite.flipX;
+
 
     private void Awake()
     {
@@ -23,14 +25,11 @@ public class PlayerAnimator : MonoBehaviour {
 
     private void Update()
     {
-        if (player.GetMovementVectorNormalized().x >= 0)
-        {
+        if (player.GetMovementVectorNormalized().x > float.Epsilon)
             sprite.flipX = false;
-        }
-        else
-        {
+        else if (player.GetMovementVectorNormalized().x < -float.Epsilon)
             sprite.flipX = true;
-        }
+
         animator.SetBool(IS_WALKING, player.IsWalking());
         animator.SetBool(IS_GROUNDED, player.IsGrounded());
         animator.SetBool(IS_FALLING, player.IsFalling());

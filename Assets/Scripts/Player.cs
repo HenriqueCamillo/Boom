@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private SkillExecutor skillExecutor;
-    [SerializeField] private Animator animator;
+    [SerializeField] private PlayerAnimator animator;
     private float groundCheckSize = 0.2f;
 
     private bool pressingJump = false;
@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     private bool canMove = true;
 
     public Rigidbody2D Rigidbody => rb;
+    public bool IsFacingLeft => animator.IsFacingLeft;
 
     private void Awake()
     {
@@ -136,7 +137,7 @@ public class Player : MonoBehaviour
 
     public bool IsWalking()
     {
-        return rb.linearVelocity.x != 0f;
+        return Mathf.Abs(rb.linearVelocity.x) > 0.01f;
     }
     public bool IsGrounded()
     {
@@ -144,7 +145,7 @@ public class Player : MonoBehaviour
     }
     public bool IsFalling()
     {
-        return rb.linearVelocity.y < 0f;
+        return rb.linearVelocity.y < 0.01f;
     }
 
     private void Reset()
