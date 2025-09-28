@@ -135,6 +135,11 @@ public class Player : MonoBehaviour
         canMove = enable;
     }
 
+    public void SetIsPressingJump(bool isPressingJump)
+    {
+        pressingJump = isPressingJump;
+    }
+
     public bool IsWalking()
     {
         return Mathf.Abs(rb.linearVelocity.x) > 0.01f;
