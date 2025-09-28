@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] Player player;
     [SerializeField] Transform playerGameplayReadyPosition;
+    [SerializeField] CameraSwitcher cameraSwitcher;
+    [SerializeField] HubLevelTransition levelTransition;
 
     public static Action OnSoftReset;
 
@@ -19,8 +21,11 @@ public class LevelManager : MonoBehaviour
 
     public void SoftReset()
     {
+        if (levelTransition.IsInHub) return;
+
         OnSoftReset?.Invoke();
         player.transform.position = playerGameplayReadyPosition.position;
         player.Reset();
+        cameraSwitcher.SoftReset();
     }
 }

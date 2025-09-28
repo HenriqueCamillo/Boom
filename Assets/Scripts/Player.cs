@@ -53,6 +53,8 @@ public class Player : MonoBehaviour
 
         playerInputActions.Player.Jump.performed += Jump;
         playerInputActions.Player.Jump.canceled += Jump;
+
+        playerInputActions.Player.Reset.performed += RestartStage;
     }
 
     private void OnDisable()
@@ -64,6 +66,8 @@ public class Player : MonoBehaviour
 
         playerInputActions.Player.Jump.performed -= Jump;
         playerInputActions.Player.Jump.canceled -= Jump;
+
+        playerInputActions.Player.Reset.performed -= RestartStage;
     }
 
     private void FixedUpdate()
@@ -181,8 +185,12 @@ public class Player : MonoBehaviour
     public void Reset()
     {
         skillExecutor.EndSkillExecution();
-        skillExecutor.ResetSkills(); 
+        skillExecutor.ResetSkills();
         rb.linearVelocity = Vector2.zero;
     }
-    
+
+    private void RestartStage(InputAction.CallbackContext ctx)
+    {
+        LevelManager.Instance.SoftReset();
+    }
 }

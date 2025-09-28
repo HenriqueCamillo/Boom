@@ -121,6 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2527903869033530115}
   playerGameplayReadyPosition: {fileID: 860432475051131051}
+  cameraSwitcher: {fileID: 4759350543042858852}
+  levelTransition: {fileID: 5385011997689367292}
 --- !u!1 &4161457811304379469
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,6 +402,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  IsInHub: 1
 --- !u!1 &8650713984449307459
 GameObject:
   m_ObjectHideFlags: 0

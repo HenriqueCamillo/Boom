@@ -40,4 +40,9 @@ public class CameraSwitcher : MonoBehaviour
         Camera.main.transform.position = camera.transform.position;
         Camera.main.orthographicSize = camera.orthographicSize;
     }
+
+    public void SoftReset()
+    {
+        SetCamera(levelCamera);
+    }
 }
