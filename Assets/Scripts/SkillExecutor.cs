@@ -88,6 +88,18 @@ public class SkillExecutor : MonoBehaviour
         lastExecutedSkill.EndExecution(player);
     }
 
+    public void TryEndExecutionOnButtonRelease()
+    {
+        if (lastExecutedSkill == null)
+            return;
+
+        if (!lastExecutedSkill.IsExecuting)
+            return;
+
+        if (lastExecutedSkill.EndOnButtonRelease)
+            lastExecutedSkill.EndExecution(player);
+    }
+
     public void SetSavedSkills()
     {
         Skill[] tempArray = new Skill[skills.Count];

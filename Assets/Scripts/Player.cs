@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
     private void EndSkillExecution() => EndSkillExecution();
     private void EndSkillExecution(InputAction.CallbackContext ctx)
     {
-        skillExecutor.EndSkillExecution();
+        skillExecutor.TryEndExecutionOnButtonRelease();
     }
 
     public void Jump(InputAction.CallbackContext ctx)
@@ -155,7 +155,8 @@ public class Player : MonoBehaviour
 
     public void Reset()
     {
-        rb.linearVelocity = Vector2.zero;
+        skillExecutor.EndSkillExecution();
         skillExecutor.ResetSkills(); 
+        rb.linearVelocity = Vector2.zero;
     }
 }
